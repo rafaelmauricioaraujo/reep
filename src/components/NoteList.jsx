@@ -5,18 +5,17 @@ class NoteList extends Component {
   render() {
     return (
       <ul>
-        <li>
-          <CardNote />
-        </li>
-        <li>
-          <CardNote />
-        </li>
-        <li>
-          <CardNote />
-        </li>
+        {Array.of("Work", "Work", "Study").map((category) => {
+          return (
+            <li>
+              <div> {category} </div>
+              <CardNote />
+            </li>
+          );
+        })}
       </ul>
     );
   }
-};
+}
 
 export default NoteList;

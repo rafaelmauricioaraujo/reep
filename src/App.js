@@ -1,15 +1,15 @@
+import React, { Component } from "react";
 import NoteList from "./components/NoteList.jsx";
-function App() {
-  return (
-    <section>
-      <form>
-        <input type="text" placeholder="Title"></input>
-        <textarea placeholder="Write your note..."></textarea>
-        <button>Create note</button>
-      </form>
-      <NoteList></NoteList>
-    </section>
-  );
-}
+import RegistrationForm from "./components/RegistrationForm.jsx";
+class App extends Component {
+  render() {
+    return (
+      <section>
+        <RegistrationForm></RegistrationForm>
+        <NoteList></NoteList>
+      </section>
+    );
+  };
+};
 
 export default App;

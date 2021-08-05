@@ -5,9 +5,9 @@ class NoteList extends Component {
   render() {
     return (
       <ul>
-        {Array.of("Work", "Work", "Study").map((category) => {
+        {Array.of("Work", "Work", "Study").map((category, index) => {
           return (
-            <li>
+            <li key={index}>
               <div> {category} </div>
               <CardNote />
             </li>

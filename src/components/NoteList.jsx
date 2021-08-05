@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CardNote from "./CardNote";
+import CardNote from "./CardNote/CardNote";
 
 class NoteList extends Component {
   render() {
@@ -7,8 +7,7 @@ class NoteList extends Component {
       <ul>
         {Array.of("Work", "Work", "Study").map((category, index) => {
           return (
-            <li key={index}>
-              <div> {category} </div>
+            <li key={index}>            
               <CardNote />
             </li>
           );

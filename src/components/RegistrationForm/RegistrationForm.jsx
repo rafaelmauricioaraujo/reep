@@ -16,7 +16,7 @@ class RegistrationForm extends Component {
     this.text = event.target.value;
   }
 
-  createNote(event) {
+  _createNote(event) {
     event.preventDefault();
     event.stopPropagation();
     this.props.createNote(this.title, this.text);
@@ -25,7 +25,7 @@ class RegistrationForm extends Component {
   render() {
     return (
       <form className="registration-form"
-        onSubmit={this.createNote.bind(this)}
+        onSubmit={this._createNote.bind(this)}
       >
         <input
           type="text"

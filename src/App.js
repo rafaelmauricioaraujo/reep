@@ -5,14 +5,23 @@ import "./assets/App.css";
 import "./assets/index.css";
 
 class App extends Component {
-  createNote(title, text) {
-    console.log(`new card created ${title}, ${text}`);
+  
+  constructor() {
+    super();
+    this.notes = [];
   }
+  
+  createNote(title, text) {
+    const newNote = {title, text};
+    this.notes.push(newNote);
+    console.log('notes:  ', this.notes);
+  }
+  
   render() {
     return (
       <section className="content">
-        <RegistrationForm createNote={this.createNote}></RegistrationForm>
-        <NoteList></NoteList>
+        <RegistrationForm createNote={this.createNote.bind(this)}></RegistrationForm>
+        <NoteList notes={this.notes}></NoteList>
       </section>
     );
   }

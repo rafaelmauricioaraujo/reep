@@ -6,7 +6,7 @@ class NoteList extends Component {
   
   constructor(props){
     super(props);
-  }
+  };
   
   render() {
     return (
@@ -20,7 +20,7 @@ class NoteList extends Component {
         })}
       </ul>
     );
-  }
-}
+  };
+};
 
 export default NoteList;

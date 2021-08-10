@@ -6,21 +6,21 @@ class RegistrationForm extends Component {
     super(props);
     this.title = "";
     this.text = "";
-  }
+  };
 
   _handlerChangeTitle(event) {
     this.title = event.target.value;
-  }
+  };
 
   _handlerChangeText(event) {
     this.text = event.target.value;
-  }
+  };
 
   _createNote(event) {
     event.preventDefault();
     event.stopPropagation();
     this.props.createNote(this.title, this.text);
-  }
+  };
 
   render() {
     return (
@@ -45,7 +45,7 @@ class RegistrationForm extends Component {
         </button>
       </form>
     );
-  }
-}
+  };
+};
 
 export default RegistrationForm;

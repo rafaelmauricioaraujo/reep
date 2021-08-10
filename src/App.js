@@ -10,7 +10,7 @@ class App extends Component {
     this.state = {
       notes: [],
     };
-  }
+  };
 
   createNote(title, text) {
     const newNote = { title, text };
@@ -19,7 +19,7 @@ class App extends Component {
       notes: newNotes,
     };
     this.setState(newState);
-  }
+  };
 
   render() {
     return (
@@ -30,7 +30,7 @@ class App extends Component {
         <NoteList notes={this.state.notes}></NoteList>
       </section>
     );
-  }
-}
+  };
+};
 
 export default App;

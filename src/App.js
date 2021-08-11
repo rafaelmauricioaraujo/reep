@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NoteList from "./components/NoteList";
 import RegistrationForm from "./components/RegistrationForm";
+import CategoryList from './components/CategoryList/CategoryList';
 import "./assets/App.css";
 import "./assets/index.css";
 
@@ -36,10 +37,14 @@ class App extends Component {
         <RegistrationForm
           createNote={this.createNote.bind(this)}
         ></RegistrationForm>
+        <main className='main-content'>
+          <CategoryList>
+          </CategoryList>
         <NoteList
           deleteNote={this.removeNote.bind(this)}
           notes={this.state.notes}
         ></NoteList>
+        </main>
       </section>
     );
   }

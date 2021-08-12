@@ -44,6 +44,7 @@ class App extends Component {
       <section className="content">
         <RegistrationForm
           createNote={this.createNote.bind(this)}
+          categoryList={this.state.categoryList}
         ></RegistrationForm>
         <main className="main-content">
           <CategoryList

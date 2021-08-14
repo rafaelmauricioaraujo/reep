@@ -3,10 +3,6 @@ import CardNote from "../CardNote/";
 import "./style.css";
 
 class NoteList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <ul className="note-list">

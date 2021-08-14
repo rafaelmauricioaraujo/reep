@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import './style.css';
+import "./style.css";
 
 class CategoryList extends Component {
   _handleEventInput(event) {
-    if (event.key == "Enter") {
+    if (event.key === "Enter") {
       let categoryValue = event.target.value;
       this.props.addCategory(categoryValue);
     }

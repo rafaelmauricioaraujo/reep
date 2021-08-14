@@ -52,7 +52,6 @@ class RegistrationForm extends Component {
         />
         <textarea
           rows={15}
-          className="registration-form_"
           placeholder="Write your note..."
           className="registration-form_input"
           onChange={this._handlerChangeText.bind(this)}

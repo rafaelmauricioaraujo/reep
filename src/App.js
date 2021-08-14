@@ -4,56 +4,31 @@ import RegistrationForm from "./components/RegistrationForm";
 import CategoryList from "./components/CategoryList/CategoryList";
 import "./assets/App.css";
 import "./assets/index.css";
+import Notes from "./data/Notes";
+import Categories from "./data/Categories";
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      notes: [],
-      categoryList: [],
-    };
+    this.notes = new Notes();
+    this.categories = new Categories();
   }
-
-  createNote(title, text, category) {
-    const newNote = { title, text, category };
-    const newNotes = [...this.state.notes, newNote];
-    const newState = {
-      notes: newNotes,
-    };
-    this.setState(newState);
-  }
-
-  removeNote(index) {
-    let noteList = this.state.notes;
-    noteList.splice(index, 1);
-    const newState = {
-      notes: noteList,
-    };
-    this.setState(newState);
-  }
-
-  addCategory(value){
-    const categoryList = this.state.categoryList;
-    const newCategoryList = [...categoryList, value];
-    const newState = {...this.state, categoryList:newCategoryList};
-    this.setState(newState);
-  }
-
+  
   render() {
     return (
       <section className="content">
         <RegistrationForm
-          createNote={this.createNote.bind(this)}
-          categoryList={this.state.categoryList}
+          categoryList={this.categories.categoryList}
+          createNote={this.notes.addNote}
         ></RegistrationForm>
         <main className="main-content">
           <CategoryList
-            addCategory={this.addCategory.bind(this)}
-            categoryList={this.state.categoryList}
+            addCategory={this.categories.addCategory}
+            categoryList={this.categories.categoryList}
           ></CategoryList>
           <NoteList
-            deleteNote={this.removeNote.bind(this)}
-            notes={this.state.notes}
+            deleteNote={this.notes.removeNote}
+            notes={this.notes.noteList}
           ></NoteList>
         </main>
       </section>

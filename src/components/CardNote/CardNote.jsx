@@ -9,10 +9,6 @@ import "./style.css";
 import { ReactComponent as DeleteSVG } from "../../assets/img/delete.svg";
 
 class CardNote extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   deleteNote() {
     const id = this.props.id;
     this.props.deleteNote(id);

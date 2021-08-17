@@ -14,20 +14,22 @@ export default class Notes {
 
   removeSubscriber() {}
 
-  addNote(title, text, categoy) {
-    const newNote = new Note(title, text, categoy);
+  addNote(title, text, category) {
+    const newNote = new Note(title, text, category);
     this.noteList.push(newNote);
+    this.notify();
   }
 
   removeNote(index) {
     this.noteList.splice(index, 1);
+    this.notify();
   }
 }
 
 class Note {
-  constructor(title, text, categoy) {
+  constructor(title, text, category) {
     this.title = title;
     this.text = text;
-    this.categoy = categoy;
+    this.category = category;
   }
 }

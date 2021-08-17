@@ -7,27 +7,36 @@ class RegistrationForm extends Component {
     this.title = "";
     this.text = "";
     this.category = "Uncategorized";
-  };
+    this.state = { categories: [] };
+  }
+
+  componentDidMount() {
+    this.props.categoryList.addSubscriber(this._newCategories.bind(this));
+  }
+
+  _newCategories(categories) {
+    this.setState({ ...this.state, categories });
+  }
 
   _handlerChangeTitle(event) {
     this.title = event.target.value;
-  };
+  }
 
   _handlerChangeText(event) {
     this.text = event.target.value;
-  };
+  }
 
   _handleChangeCategory(event) {
     event.preventDefault();
     event.stopPropagation();
     this.category = event.target.value;
-  };
+  }
 
   _createNote(event) {
     event.preventDefault();
     event.stopPropagation();
     this.props.createNote(this.title, this.text, this.category);
-  };
+  }
 
   render() {
     return (
@@ -40,8 +49,8 @@ class RegistrationForm extends Component {
           className="registration-form_input"
         >
           <option>Uncategorized</option>
-          {this.props.categoryList.map((category) => {
-            return <option>{category}</option>;
+          {this.state.categories.map((category, index) => {
+            return <option key={index}>{category}</option>;
           })}
         </select>
         <input
@@ -61,7 +70,7 @@ class RegistrationForm extends Component {
         </button>
       </form>
     );
-  };
-};
+  }
+}
 
 export default RegistrationForm;

@@ -13,13 +13,13 @@ class App extends Component {
     this.notes = new Notes();
     this.categories = new Categories();
   }
-  
+
   render() {
     return (
       <section className="content">
         <RegistrationForm
-          categoryList={this.categories.categoryList}
-          createNote={this.notes.addNote}
+          categoryList={this.categories}
+          createNote={this.notes.addNote.bind(this.notes)}
         ></RegistrationForm>
         <main className="main-content">
           <CategoryList
@@ -27,8 +27,8 @@ class App extends Component {
             categoryList={this.categories}
           ></CategoryList>
           <NoteList
-            deleteNote={this.notes.removeNote}
-            notes={this.notes.noteList}
+            deleteNote={this.notes.removeNote.bind(this.notes)}
+            notes={this.notes}
           ></NoteList>
         </main>
       </section>

@@ -23,8 +23,8 @@ class App extends Component {
         ></RegistrationForm>
         <main className="main-content">
           <CategoryList
-            addCategory={this.categories.addCategory}
-            categoryList={this.categories.categoryList}
+            addCategory={this.categories.addCategory.bind(this.categories)}
+            categoryList={this.categories}
           ></CategoryList>
           <NoteList
             deleteNote={this.notes.removeNote}

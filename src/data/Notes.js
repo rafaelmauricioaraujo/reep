@@ -12,7 +12,9 @@ export default class Notes {
     this._subscribers.forEach((func) => func(this.noteList));
   }
 
-  removeSubscriber() {}
+  removeSubscriber(func) {
+    this._subscribers = this._subscribers.filter((f) => f !== func);
+  }
 
   addNote(title, text, category) {
     const newNote = new Note(title, text, category);

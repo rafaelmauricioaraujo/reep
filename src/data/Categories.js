@@ -12,7 +12,9 @@ export default class Categories {
     this._subscribers.forEach((func) => func(this.categoryList));
   }
 
-  removeSubscriber() {}
+  removeSubscriber(func) {
+    this._subscribers = this._subscribers.filter((f) => f !== func);
+  }
 
   addCategory(categoryValue) {
     this.categoryList.push(categoryValue);

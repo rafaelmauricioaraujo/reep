@@ -6,6 +6,7 @@ import "./assets/App.css";
 import "./assets/index.css";
 import Notes from "./data/Notes";
 import Categories from "./data/Categories";
+import UserForm from "./components/UserForm/UserForm";
 
 class App extends Component {
   constructor() {
@@ -17,6 +18,8 @@ class App extends Component {
   render() {
     return (
       <section className="content">
+        <h1 className="main-content">User Form</h1>
+        <UserForm />
         <RegistrationForm
           categoryList={this.categories}
           createNote={this.notes.addNote.bind(this.notes)}

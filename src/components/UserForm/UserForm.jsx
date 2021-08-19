@@ -1,17 +1,15 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 
 function UserForm() {
   return (
     <form>
-      <label>First Name</label>
-      <input type="text" />
+      <TextField id="standard-basic" label="First Name"  variant="outlined" fullWidth/>
 
-      <label>Last Name</label>
-      <input type="text" />
+      <TextField id="standard-basic" label="Last Name"  variant="outlined" fullWidth/>
 
-      <label>ID Code</label>
-      <input type="text" />
+      <TextField id="standard-basic" label="ID Code"  variant="outlined" fullWidth/>
 
       <label>Promotions</label>
       <input type="checkbox" />

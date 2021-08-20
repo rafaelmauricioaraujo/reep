@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, TextField, Switch, FormControlLabel } from "@material-ui/core";
 
 function UserForm() {
+  const [firstName, setFirstName] = useState("");
+  const [secondName, setSecondName] = useState("");
+
   return (
-    <form>
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        console.log(firstName);
+        console.log(secondName);
+      }}
+    >
       <TextField
         id="standard-basic"
         label="First Name"
         margin="normal"
         variant="outlined"
         fullWidth
+        value={firstName}
+        onChange={(event) => {
+          let temp = event.target.value;
+          if (temp >= 3) {
+            temp = temp.substr(0, 3);
+          }
+          setFirstName(temp);
+        }}
       />
 
       <TextField
@@ -18,6 +35,10 @@ function UserForm() {
         margin="normal"
         variant="outlined"
         fullWidth
+        value={secondName}
+        onChange={(event) => {
+          setSecondName(event.target.value);
+        }}
       />
 
       <TextField

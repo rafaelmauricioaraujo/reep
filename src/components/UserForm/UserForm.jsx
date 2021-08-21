@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import { Button, TextField, Switch, FormControlLabel } from "@material-ui/core";
 
-function UserForm({onSubmit}) {
+function UserForm({ onSubmit, validEmail }) {
   const [firstName, setFirstName] = useState("");
   const [secondName, setSecondName] = useState("");
   const [eMail, setEmail] = useState("");
   const [promotions, setPromotions] = useState(true);
   const [newsletter, setNewsletter] = useState(true);
+  const [error, setError] = useState({ email: { valid: true, text: "" } });
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        onSubmit({firstName, secondName, eMail, promotions, newsletter});
+        onSubmit({ firstName, secondName, eMail, promotions, newsletter });
       }}
     >
       <TextField
@@ -45,6 +46,12 @@ function UserForm({onSubmit}) {
         margin="normal"
         variant="outlined"
         fullWidth
+        onBlur={(event) => {
+          const isValid = validEmail(event.target.value);
+          setError(isValid);
+        }}
+        error={!error.email.valid}
+        helperText={error.email.text}
         value={eMail}
         onChange={(event) => {
           setEmail(event.target.value);

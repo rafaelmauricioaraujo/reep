@@ -25,7 +25,7 @@ class App extends Component {
           <Typography variant="h3" component="h1">
             User Form
           </Typography>
-          <UserForm onSubmit={onSubmit}/>
+          <UserForm onSubmit={onSubmit} validEmail={validEmail} />
         </Container>
         <Container maxWidth="sm">
           <Typography variant="h3" component="h1">
@@ -38,9 +38,9 @@ class App extends Component {
         </Container>
         <Container maxWidth="lg">
           <main className="main-content">
-          <Typography variant="h3" component="h1">
-            Note List
-          </Typography>
+            <Typography variant="h3" component="h1">
+              Note List
+            </Typography>
             <CategoryList
               addCategory={this.categories.addCategory.bind(this.categories)}
               categoryList={this.categories}
@@ -56,8 +56,16 @@ class App extends Component {
   }
 }
 
-function onSubmit(dados){
+function onSubmit(dados) {
   console.log(dados);
+}
+
+function validEmail(email) {
+  if (email.length <= 3) {
+    return { email: { valid: false, text: "Inválid email" } };
+  } else {
+    return { email: { valid: true, text: "" } };
+  }
 }
 
 export default App;

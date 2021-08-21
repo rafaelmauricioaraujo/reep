@@ -25,7 +25,7 @@ class App extends Component {
           <Typography variant="h3" component="h1">
             User Form
           </Typography>
-          <UserForm />
+          <UserForm onSubmit={onSubmit}/>
         </Container>
         <Container maxWidth="sm">
           <Typography variant="h3" component="h1">
@@ -54,6 +54,10 @@ class App extends Component {
       </section>
     );
   }
+}
+
+function onSubmit(dados){
+  console.log(dados);
 }
 
 export default App;

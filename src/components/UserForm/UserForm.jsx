@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { Button, TextField, Switch, FormControlLabel } from "@material-ui/core";
 
-function UserForm() {
+function UserForm({onSubmit}) {
   const [firstName, setFirstName] = useState("");
   const [secondName, setSecondName] = useState("");
+  const [eMail, setEmail] = useState("");
+  const [promotions, setPromotions] = useState(true);
+  const [newsletter, setNewsletter] = useState(true);
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        console.log(firstName);
-        console.log(secondName);
+        onSubmit({firstName, secondName, eMail, promotions, newsletter});
       }}
     >
       <TextField
@@ -21,11 +23,7 @@ function UserForm() {
         fullWidth
         value={firstName}
         onChange={(event) => {
-          let temp = event.target.value;
-          if (temp >= 3) {
-            temp = temp.substr(0, 3);
-          }
-          setFirstName(temp);
+          setFirstName(event.target.value);
         }}
       />
 
@@ -47,15 +45,37 @@ function UserForm() {
         margin="normal"
         variant="outlined"
         fullWidth
+        value={eMail}
+        onChange={(event) => {
+          setEmail(event.target.value);
+        }}
       />
 
       <FormControlLabel
-        control={<Switch size="small" color="primary" defaultChecked />}
+        control={
+          <Switch
+            size="small"
+            color="primary"
+            checked={promotions}
+            onChange={(event) => {
+              setPromotions(event.target.checked);
+            }}
+          />
+        }
         label="Promotions"
       />
 
       <FormControlLabel
-        control={<Switch size="small" color="primary" defaultChecked />}
+        control={
+          <Switch
+            size="small"
+            color="primary"
+            checked={newsletter}
+            onChange={(event) => {
+              setNewsletter(event.target.checked);
+            }}
+          />
+        }
         label="Newsletter"
       />
 

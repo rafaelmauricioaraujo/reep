@@ -1,5 +1,6 @@
 import React from "react";
 import PersonalData from "./PersonalData";
+import ShipmentData from "./ShipmentData";
 import UserData from "./UserData";
 
 function UserForm({ onSubmit, validEmail }) {
@@ -7,6 +8,7 @@ function UserForm({ onSubmit, validEmail }) {
     <>
       <PersonalData onSubmit={onSubmit} validEmail={validEmail} />
       <UserData />
+      <ShipmentData />
     </>
   );
 }

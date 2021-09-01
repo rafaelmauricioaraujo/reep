@@ -21,6 +21,7 @@ function PersonalData({ onSubmit, validEmail }) {
         label="First Name"
         margin="normal"
         variant="outlined"
+        required="true"
         fullWidth
         value={firstName}
         onChange={(event) => {
@@ -33,6 +34,7 @@ function PersonalData({ onSubmit, validEmail }) {
         label="Last Name"
         margin="normal"
         variant="outlined"
+        required="true"
         fullWidth
         value={secondName}
         onChange={(event) => {
@@ -45,6 +47,7 @@ function PersonalData({ onSubmit, validEmail }) {
         label="E-mail"
         margin="normal"
         variant="outlined"
+        required="true"
         fullWidth
         onBlur={(event) => {
           const isValid = validEmail(event.target.value);

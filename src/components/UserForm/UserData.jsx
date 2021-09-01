@@ -10,6 +10,7 @@ function UserData() {
         type="email"
         margin="normal"
         variant="outlined"
+        required="true"
         fullWidth
       />
       <TextField
@@ -18,6 +19,7 @@ function UserData() {
         type="password"
         margin="normal"
         variant="outlined"
+        required="true"
         fullWidth
       />
       <Button type="submit" variant="contained" color="primary">

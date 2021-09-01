@@ -6,15 +6,19 @@ import UserData from "./UserData";
 
 function UserForm({ onSubmit, validEmail }) {
   const [currentState, setCurrentState] = useState(0);
+
+  function next() {
+    setCurrentState(currentState + 1);
+  }
   
   function currentForm(currentState) {
     switch (currentState) {
       case 0:
-        return <PersonalData onSubmit={onSubmit} validEmail={validEmail} />;
+        return <PersonalData onSubmit={next} validEmail={validEmail} />;
       case 1:
-        return <UserData />;
+        return <UserData onSubmit={next} />;
       case 2:
-        return <ShipmentData />;
+        return <ShipmentData onSubmit={onSubmit} />;
       default:
         return <Typography>Error. Form not recognize</Typography>;
     }

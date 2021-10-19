@@ -4,7 +4,7 @@ import ShipmentData from "./ShipmentData";
 import UserData from "./UserData";
 
 function UserForm({ onSubmit, validEmail }) {
-  const [currentState, setCurrentState] = useState(0);
+  const [currentStep, setCurrentStep] = useState(0);
 
   const forms = [
     <UserData onSubmit={next} />,
@@ -13,10 +13,10 @@ function UserForm({ onSubmit, validEmail }) {
   ];
 
   function next() {
-    setCurrentState(currentState + 1);
+    setCurrentStep(currentStep + 1);
   }
 
-  return <>{forms[currentState]}</>;
+  return <>{forms[currentStep]}</>;
 }
 
 export default UserForm;

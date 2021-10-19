@@ -1,3 +1,4 @@
+import { Step, StepLabel, Stepper, Typography } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import PersonalData from "./PersonalData";
 import ShipmentData from "./ShipmentData";
@@ -7,13 +8,16 @@ function UserForm({ onSubmit, validEmail }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [userData, setUserData] = useState({});
   useEffect(() => {
-    console.log(userData);
+    if (currentStep === forms.length - 1) {
+      onSubmit(userData);
+    }
   });
 
   const forms = [
     <UserData onSubmit={getUserData} />,
     <PersonalData onSubmit={getUserData} validEmail={validEmail} />,
-    <ShipmentData onSubmit={onSubmit} />,
+    <ShipmentData onSubmit={getUserData} />,
+    <Typography variant="h5">Thank you!</Typography>
   ];
 
   function getUserData(data) {
@@ -25,7 +29,25 @@ function UserForm({ onSubmit, validEmail }) {
     setCurrentStep(currentStep + 1);
   }
 
-  return <>{forms[currentStep]}</>;
+  return (
+    <>
+      <Stepper activeStep={currentStep}>
+        <Step>
+          <StepLabel>Login</StepLabel>
+        </Step>
+        <Step>
+          <StepLabel>Dados Pessoais</StepLabel>
+        </Step>
+        <Step>
+          <StepLabel>Dados de Entrega</StepLabel>
+        </Step>
+        <Step>
+          <StepLabel>Finalização</StepLabel>
+        </Step>
+      </Stepper>
+      {forms[currentStep]}
+    </>
+  );
 }
 
 export default UserForm;

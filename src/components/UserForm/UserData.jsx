@@ -5,24 +5,27 @@ function UserData({ onSubmit, validations }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [error, setError] = useState({ email: { valid: true, text: "" } });
+  const [error, setError] = useState({
+    email: { valid: true, text: "" },
+    password: { valid: true, text: "" },
+  });
 
   function validFields(event) {
-    const {name, value} = event.target;
-    
+    const { name, value } = event.target;
+
     /*
     const newState = {...error};
     newState[name] = validations[name](value); 
     **/
-    
+
     const isValid = validations[name](value);
-    const newState = {...error, ...isValid}
+    const newState = { ...error, ...isValid };
     setError(newState);
   }
 
-  function validForm(){
-    for(let field in error){
-      if(!error[field].valid) {
+  function validForm() {
+    for (let field in error) {
+      if (!error[field].valid) {
         return false;
       }
     }
@@ -33,8 +36,8 @@ function UserData({ onSubmit, validations }) {
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        if(validForm()) {
-          onSubmit({email, password});
+        if (validForm()) {
+          onSubmit({ email, password });
         }
       }}
     >
@@ -59,13 +62,16 @@ function UserData({ onSubmit, validations }) {
           setPassword(event.target.value);
         }}
         id="password"
-        name="pasword"
+        name="password"
         label="password"
         type="password"
         margin="normal"
         variant="outlined"
         required={true}
         fullWidth
+        onBlur={validFields}
+        error={!error.password.valid}
+        helperText={error.password.text}
       />
       <Button type="submit" variant="contained" color="primary">
         Next

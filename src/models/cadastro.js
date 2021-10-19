@@ -6,6 +6,14 @@ function validEmail(email) {
   }
 }
 
+function validUserName(userName) {
+  if (userName.length <= 3) {
+    return { name: { valid: false, text: "Invalid Username" } };
+  } else {
+    return { name: { valid: true, text: "" } };
+  }
+}
+
 function validPassword(password) {
   if (password.length <= 4 || password.length >= 72) {
     return { password: { valid: false, text: "Invalid password" } };
@@ -14,4 +22,4 @@ function validPassword(password) {
   }
 }
 
-export {validEmail, validPassword};
+export { validEmail, validUserName, validPassword };

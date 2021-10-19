@@ -11,6 +11,8 @@ import UserForm from "./components/UserForm/UserForm";
 import { Container, Typography } from "@material-ui/core";
 import "@fontsource/roboto";
 
+import RegisterValidations from "./contexts/RegisterValidations";
+
 import { validEmail, validUserName, validPassword } from "./models/cadastro";
 class App extends Component {
   constructor() {
@@ -30,14 +32,15 @@ class App extends Component {
           <Typography variant="h3" component="h1">
             User Form
           </Typography>
-          <UserForm
-            onSubmit={this.onSubmit.bind(this)}
-            validations={{
+          <RegisterValidations.Provider
+            value={{
               email: validEmail,
               name: validUserName,
               password: validPassword,
             }}
-          />
+          >
+            <UserForm onSubmit={this.onSubmit.bind(this)} />
+          </RegisterValidations.Provider>
         </Container>
         <Container maxWidth="sm">
           <Typography variant="h3" component="h1">

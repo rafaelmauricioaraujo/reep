@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, TextField, Switch, FormControlLabel } from "@material-ui/core";
 
-function PersonalData({ onSubmit, validations }) {
+import RegisterValidations from "../../contexts/RegisterValidations";
+
+function PersonalData({ onSubmit }) {
   const [firstName, setFirstName] = useState("");
   const [secondName, setSecondName] = useState("");
   const [email, setEmail] = useState("");
@@ -9,16 +11,18 @@ function PersonalData({ onSubmit, validations }) {
   const [newsletter, setNewsletter] = useState(true);
   const [error, setError] = useState({ email: { valid: true, text: "" } });
 
+  const validations = useContext(RegisterValidations);
+
   function validFields(event) {
-    const {name, value} = event.target;
-    
+    const { name, value } = event.target;
+
     /*
     const newState = {...error};
     newState[name] = validations[name](value); 
     **/
-    
+
     const isValid = validations[name](value);
-    const newState = {...error, ...isValid}
+    const newState = { ...error, ...isValid };
     setError(newState);
   }
 

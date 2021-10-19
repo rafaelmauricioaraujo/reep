@@ -11,6 +11,12 @@ function PersonalData({ onSubmit, validations }) {
 
   function validFields(event) {
     const {name, value} = event.target;
+    
+    /*
+    const newState = {...error};
+    newState[name] = validations[name](value); 
+    **/
+    
     const isValid = validations[name](value);
     const newState = {...error, ...isValid}
     setError(newState);
@@ -95,7 +101,7 @@ function PersonalData({ onSubmit, validations }) {
       />
 
       <Button variant="contained" color="primary" type="submit">
-        Register
+        Next
       </Button>
     </form>
   );

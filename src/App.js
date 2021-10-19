@@ -18,6 +18,18 @@ class App extends Component {
     this.categories = new Categories();
   }
 
+  onSubmit(dados) {
+    console.log(dados);
+  }
+
+  validEmail(email) {
+    if (email.length <= 3) {
+      return { email: { valid: false, text: "Inválid email" } };
+    } else {
+      return { email: { valid: true, text: "" } };
+    }
+  }
+
   render() {
     return (
       <section className="content">
@@ -25,7 +37,10 @@ class App extends Component {
           <Typography variant="h3" component="h1">
             User Form
           </Typography>
-          <UserForm onSubmit={onSubmit} validEmail={validEmail} />
+          <UserForm
+            onSubmit={this.onSubmit.bind(this)}
+            validEmail={this.validEmail.bind(this)}
+          />
         </Container>
         <Container maxWidth="sm">
           <Typography variant="h3" component="h1">
@@ -53,18 +68,6 @@ class App extends Component {
         </Container>
       </section>
     );
-  }
-}
-
-function onSubmit(dados) {
-  console.log(dados);
-}
-
-function validEmail(email) {
-  if (email.length <= 3) {
-    return { email: { valid: false, text: "Inválid email" } };
-  } else {
-    return { email: { valid: true, text: "" } };
   }
 }
 

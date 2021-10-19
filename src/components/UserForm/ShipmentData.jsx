@@ -1,10 +1,25 @@
 import { Button, TextField } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 
-function ShipmentData() {
+function ShipmentData({ onSubmit }) {
+  const [postalCode, setPostalCode] = useState("");
+  const [address, setAddress] = useState("");
+  const [number, setNumber] = useState("");
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
+
   return (
-    <form>
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        onSubmit({postalCode, address, number, state, city});
+      }}
+    >
       <TextField
+        value={postalCode}
+        onChange={(event) => {
+          setPostalCode(event.target.value);
+        }}
         id="postalCode"
         label="Postal Code"
         type="number"
@@ -12,6 +27,10 @@ function ShipmentData() {
         variant="outlined"
       />
       <TextField
+        value={address}
+        onChange={(event) => {
+          setAddress(event.target.value);
+        }}
         id="address"
         label="Address"
         type="text"
@@ -20,6 +39,10 @@ function ShipmentData() {
         fullWidth
       />
       <TextField
+        value={number}
+        onChange={(event) => {
+          setNumber(event.target.value);
+        }}
         id="number"
         label="Number"
         type="text"
@@ -27,6 +50,10 @@ function ShipmentData() {
         variant="outlined"
       />
       <TextField
+        value={state}
+        onChange={(event) => {
+          setState(event.target.value);
+        }}
         id="state"
         label="State"
         type="text"
@@ -34,6 +61,10 @@ function ShipmentData() {
         variant="outlined"
       />
       <TextField
+        value={city}
+        onChange={(event) => {
+          setCity(event.target.value);
+        }}
         id="city"
         label="city"
         type="text"

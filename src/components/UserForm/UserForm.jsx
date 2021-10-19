@@ -4,9 +4,10 @@ import PersonalData from "./PersonalData";
 import ShipmentData from "./ShipmentData";
 import UserData from "./UserData";
 
-function UserForm({ onSubmit, validEmail }) {
+function UserForm({ onSubmit, validations }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [userData, setUserData] = useState({});
+
   useEffect(() => {
     if (currentStep === forms.length - 1) {
       onSubmit(userData);
@@ -14,10 +15,10 @@ function UserForm({ onSubmit, validEmail }) {
   });
 
   const forms = [
-    <UserData onSubmit={getUserData} />,
-    <PersonalData onSubmit={getUserData} validEmail={validEmail} />,
-    <ShipmentData onSubmit={getUserData} />,
-    <Typography variant="h5">Thank you!</Typography>
+    <UserData onSubmit={getUserData} validations={validations} />,
+    <PersonalData onSubmit={getUserData} validations={validations} />,
+    <ShipmentData onSubmit={getUserData} validations={validations} />,
+    <Typography variant="h5">Thank you!</Typography>,
   ];
 
   function getUserData(data) {

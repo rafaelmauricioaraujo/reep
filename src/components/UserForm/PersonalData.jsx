@@ -1,19 +1,26 @@
 import React, { useState } from "react";
 import { Button, TextField, Switch, FormControlLabel } from "@material-ui/core";
 
-function PersonalData({ onSubmit, validEmail }) {
+function PersonalData({ onSubmit, validations }) {
   const [firstName, setFirstName] = useState("");
   const [secondName, setSecondName] = useState("");
-  const [eMail, setEmail] = useState("");
+  const [email, setEmail] = useState("");
   const [promotions, setPromotions] = useState(true);
   const [newsletter, setNewsletter] = useState(true);
   const [error, setError] = useState({ email: { valid: true, text: "" } });
+
+  function validFields(event) {
+    const {name, value} = event.target;
+    const isValid = validations[name](value);
+    const newState = {...error, ...isValid}
+    setError(newState);
+  }
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        onSubmit({ firstName, secondName, eMail, promotions, newsletter });
+        onSubmit({ firstName, secondName, email, promotions, newsletter });
       }}
     >
       <TextField
@@ -49,13 +56,11 @@ function PersonalData({ onSubmit, validEmail }) {
         variant="outlined"
         required={true}
         fullWidth
-        onBlur={(event) => {
-          const isValid = validEmail(event.target.value);
-          setError(isValid);
-        }}
+        name="email"
+        onBlur={validFields}
         error={!error.email.valid}
         helperText={error.email.text}
-        value={eMail}
+        value={email}
         onChange={(event) => {
           setEmail(event.target.value);
         }}

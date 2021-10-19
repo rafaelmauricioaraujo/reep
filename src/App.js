@@ -11,6 +11,7 @@ import UserForm from "./components/UserForm/UserForm";
 import { Container, Typography } from "@material-ui/core";
 import "@fontsource/roboto";
 
+import { validEmail, validPassword } from "./models/cadastro";
 class App extends Component {
   constructor() {
     super();
@@ -22,14 +23,6 @@ class App extends Component {
     console.log(dados);
   }
 
-  validEmail(email) {
-    if (email.length <= 3) {
-      return { email: { valid: false, text: "Inválid email" } };
-    } else {
-      return { email: { valid: true, text: "" } };
-    }
-  }
-
   render() {
     return (
       <section className="content">
@@ -39,7 +32,7 @@ class App extends Component {
           </Typography>
           <UserForm
             onSubmit={this.onSubmit.bind(this)}
-            validEmail={this.validEmail.bind(this)}
+            validations={{email: validEmail, password: validPassword}}
           />
         </Container>
         <Container maxWidth="sm">

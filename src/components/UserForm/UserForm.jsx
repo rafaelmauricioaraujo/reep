@@ -1,10 +1,10 @@
 import { Step, StepLabel, Stepper, Typography } from "@material-ui/core";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import PersonalData from "./PersonalData";
 import ShipmentData from "./ShipmentData";
 import UserData from "./UserData";
 
-function UserForm({ onSubmit, validations }) {
+function UserForm({ onSubmit }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [userData, setUserData] = useState({});
 
@@ -15,9 +15,9 @@ function UserForm({ onSubmit, validations }) {
   });
 
   const forms = [
-    <UserData onSubmit={getUserData} validations={validations} />,
-    <PersonalData onSubmit={getUserData} validations={validations} />,
-    <ShipmentData onSubmit={getUserData} validations={validations} />,
+    <UserData onSubmit={getUserData} />,
+    <PersonalData onSubmit={getUserData} />,
+    <ShipmentData onSubmit={getUserData} />,
     <Typography variant="h5">Thank you!</Typography>,
   ];
 

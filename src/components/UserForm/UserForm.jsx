@@ -7,8 +7,8 @@ function UserForm({ onSubmit, validEmail }) {
   const [currentState, setCurrentState] = useState(0);
 
   const forms = [
-    <PersonalData onSubmit={next} validEmail={validEmail} />,
     <UserData onSubmit={next} />,
+    <PersonalData onSubmit={next} validEmail={validEmail} />,
     <ShipmentData onSubmit={onSubmit} />,
   ];
 

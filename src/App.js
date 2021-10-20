@@ -3,6 +3,7 @@ import NoteList from "./components/NoteList";
 import RegistrationForm from "./components/RegistrationForm";
 import CategoryList from "./components/CategoryList/CategoryList";
 import UserForm from "./components/UserForm/UserForm";
+import Header from "./components/Header/Header";
 import Page404 from "./components/404/Page404";
 
 import "./assets/App.css";
@@ -34,6 +35,7 @@ function App() {
 
   return (
     <Router>
+      <Header />
       <Switch>
         <Route exact path="/">
           <section className="content">
@@ -82,7 +84,7 @@ function App() {
           </section>
         </Route>
         <Route>
-          <Page404 className="content"/>
+          <Page404 className="content" />
         </Route>
       </Switch>
     </Router>

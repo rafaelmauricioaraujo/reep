@@ -13,62 +13,75 @@ import "@fontsource/roboto";
 
 import RegisterValidations from "./contexts/RegisterValidations";
 
-import { validEmail, validUserName, validPassword } from "./models/cadastro";
-class App extends Component {
-  constructor() {
-    super();
-    this.notes = new Notes();
-    this.categories = new Categories();
-  }
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-  onSubmit(dados) {
+import { validEmail, validUserName, validPassword } from "./models/cadastro";
+function App() {
+  // constructor() {
+  //   super();
+  //   this.notes = new Notes();
+  //   this.categories = new Categories();
+  // }
+
+  const notes = new Notes();
+  const categories = new Categories();
+
+  function onSubmit(dados) {
     console.log(dados);
   }
 
-  render() {
-    return (
-      <section className="content">
-        <Container maxWidth="sm">
-          <Typography variant="h3" component="h1">
-            User Form
-          </Typography>
-          <RegisterValidations.Provider
-            value={{
-              email: validEmail,
-              name: validUserName,
-              password: validPassword,
-            }}
-          >
-            <UserForm onSubmit={this.onSubmit.bind(this)} />
-          </RegisterValidations.Provider>
-        </Container>
-        <Container maxWidth="sm">
-          <Typography variant="h3" component="h1">
-            Create Note
-          </Typography>
-          <RegistrationForm
-            categoryList={this.categories}
-            createNote={this.notes.addNote.bind(this.notes)}
-          ></RegistrationForm>
-        </Container>
-        <Container maxWidth="lg">
-          <main className="main-content">
-            <Typography variant="h3" component="h1">
-              Note List
-            </Typography>
-            <CategoryList
-              addCategory={this.categories.addCategory.bind(this.categories)}
-              categoryList={this.categories}
-            ></CategoryList>
-            <NoteList
-              deleteNote={this.notes.removeNote.bind(this.notes)}
-              notes={this.notes}
-            ></NoteList>
-          </main>
-        </Container>
-      </section>
-    );
-  }
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <section className="content">
+            <Container maxWidth="sm">
+              <Typography variant="h3" component="h1">
+                User Form
+              </Typography>
+              <RegisterValidations.Provider
+                value={{
+                  email: validEmail,
+                  name: validUserName,
+                  password: validPassword,
+                }}
+              >
+                <UserForm onSubmit={onSubmit} />
+              </RegisterValidations.Provider>
+            </Container>
+          </section>
+        </Route>
+        <Route path="/reep">
+          <section className="content">
+            <Container maxWidth="sm">
+              <Typography variant="h3" component="h1">
+                Create Note
+              </Typography>
+              <RegistrationForm
+                categoryList={categories}
+                createNote={notes.addNote.bind(notes)}
+              ></RegistrationForm>
+            </Container>
+            <Container maxWidth="lg">
+              <main className="main-content">
+                <Typography variant="h3" component="h1">
+                  Note List
+                </Typography>
+                <CategoryList
+                  addCategory={categories.addCategory.bind(categories)}
+                  categoryList={categories}
+                ></CategoryList>
+                <NoteList
+                  deleteNote={notes.removeNote.bind(notes)}
+                  notes={notes}
+                ></NoteList>
+              </main>
+            </Container>
+          </section>
+        </Route>
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;

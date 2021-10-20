@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import NoteList from "./components/NoteList";
 import RegistrationForm from "./components/RegistrationForm";
 import CategoryList from "./components/CategoryList/CategoryList";
+import UserForm from "./components/UserForm/UserForm";
+import Page404 from "./components/404/Page404";
+
 import "./assets/App.css";
 import "./assets/index.css";
 import Notes from "./data/Notes";
 import Categories from "./data/Categories";
-import UserForm from "./components/UserForm/UserForm";
 
 import { Container, Typography } from "@material-ui/core";
 import "@fontsource/roboto";
@@ -78,6 +80,9 @@ function App() {
               </main>
             </Container>
           </section>
+        </Route>
+        <Route>
+          <Page404 className="content"/>
         </Route>
       </Switch>
     </Router>

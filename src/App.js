@@ -4,6 +4,7 @@ import RegistrationForm from "./components/RegistrationForm";
 import CategoryList from "./components/CategoryList/CategoryList";
 import UserForm from "./components/UserForm/UserForm";
 import Header from "./components/Header/Header";
+import Blog from "./components/Blog/Blog";
 import Page404 from "./components/404/Page404";
 
 import "./assets/App.css";
@@ -82,6 +83,9 @@ function App() {
               </main>
             </Container>
           </section>
+        </Route>
+        <Route path="/blog">
+          <Blog />
         </Route>
         <Route>
           <Page404 className="content" />

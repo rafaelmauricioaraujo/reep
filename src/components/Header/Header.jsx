@@ -28,6 +28,9 @@ function Header() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link to="/reep">Notes</Link>
           </Typography>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Link to="/blog">Blog</Link>
+          </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>

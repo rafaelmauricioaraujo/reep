@@ -1,0 +1,36 @@
+{
+    "posts": [
+        {
+            "id": 1,
+            "title": "test 01 title",
+            "metadescription": "test 01 meta",
+            "body": "test 01 body",
+            "category": "test 01 category",
+            "subcategory": "test 01 subcategory"
+        },
+        {
+            "id": 2,
+            "title": "test 02 title",
+            "metadescription": "test 02 meta",
+            "body": "test 02 body",
+            "category": "test 02 category",
+            "subcategory": "test 02 subcategory"
+        },
+        {
+            "id": 3,
+            "title": "test 03 title",
+            "metadescription": "test 03 meta",
+            "body": "test 03 body",
+            "category": "test 03 category",
+            "subcategory": "test 03 subcategory"
+        },
+        {
+            "id": 4,
+            "title": "test 04 title",
+            "metadescription": "test 04 meta",
+            "body": "test 04 body",
+            "category": "test 04 category",
+            "subcategory": "test 04 subcategory"
+        }
+    ]
+}

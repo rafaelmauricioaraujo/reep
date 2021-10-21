@@ -1,8 +1,15 @@
 import { TextField, Button } from "@material-ui/core";
 import React, { useState, useContext } from "react";
 
+import styled from "styled-components";
+import { primaryColor } from "../UI/variables";
+
 import RegisterValidations from "../../contexts/RegisterValidations";
 import useError from "../../hooks/useError";
+
+const StyledForm = styled.form`
+ background-color: ${primaryColor}
+`;
 
 function UserData({ onSubmit }) {
   const [email, setEmail] = useState("");
@@ -12,7 +19,7 @@ function UserData({ onSubmit }) {
   const [error, validFields, validForm] = useError(validations);
 
   return (
-    <form
+    <StyledForm
       onSubmit={(event) => {
         event.preventDefault();
         if (validForm()) {
@@ -55,7 +62,7 @@ function UserData({ onSubmit }) {
       <Button type="submit" variant="contained" color="primary">
         Next
       </Button>
-    </form>
+    </StyledForm>
   );
 }
 

@@ -8,6 +8,8 @@ import Blog from "./components/Blog/Blog";
 import Post from "./components/Post/Post";
 import Page404 from "./components/404/Page404";
 
+import { GlobalStyle } from "./components/GlobalStyle";
+
 import "./assets/App.css";
 import "./assets/index.css";
 import Notes from "./data/Notes";
@@ -37,6 +39,7 @@ function App() {
 
   return (
     <Router>
+      <GlobalStyle />
       <Header />
       <Switch>
         <Route exact path="/">

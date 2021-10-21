@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import CardNote from "../CardNote/";
 import "./style.css";
-
 class NoteList extends Component {
   constructor() {
     super();
     this.state = { notes: [] };
-    this._newNote = this._newNote.bind(this)
+    this._newNote = this._newNote.bind(this);
   }
 
   componentDidMount() {
@@ -18,7 +17,7 @@ class NoteList extends Component {
   }
 
   _newNote(notes) {
-    this.setState({...this.state, notes});
+    this.setState({ ...this.state, notes });
   }
 
   render() {
